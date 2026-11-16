@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "yo7 · 观察小刊编辑助手",
+  "version": "0.1.1",
+  "description": "在公众号编辑页预览和插入 HTML，局部修改排版，保留本地备份与检查记录。",
+  "permissions": ["storage"],
+  "action": {"default_title": "打开 yo7 编辑助手"},
+  "background": {"service_worker": "background.js"},
+  "content_scripts": [{
+    "matches": ["https://mp.weixin.qq.com/*"],
+    "js": ["core.js", "editor.js", "content.js"],
+    "run_at": "document_idle"
+  }],
+  "content_security_policy": {"extension_pages": "script-src 'self'; object-src 'none'"}
+}
